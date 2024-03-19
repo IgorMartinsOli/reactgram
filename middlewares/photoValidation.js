@@ -20,6 +20,17 @@ const photoInsertValidation = () => {
     ];
 }
 
+const commentValidation = () => {
+    return [
+        body('comment')
+            .notEmpty()
+            .withMessage('Comment is required')
+            .isLength({ min: 3, max: 100 })
+            .withMessage('Comment must be between 3 and 100 characters')
+    ];
+}
+
 module.exports = {
-    photoInsertValidation
+    photoInsertValidation,
+    commentValidation
 }
