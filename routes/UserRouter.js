@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { register, login, getCurrentUser, update } = require('../controllers/UserController');
+const { register, login, getCurrentUser, update, getUserById } = require('../controllers/UserController');
 
 //Middleware
 const  validation  = require('../middlewares/handleValidation');
@@ -20,5 +20,6 @@ router.put(
     imageUpload.single("profileImage"),
     update
 );
+router.get('/:id', getUserById);
 
 module.exports = router;

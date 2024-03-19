@@ -104,9 +104,26 @@ const update = async (req, res) => {
     }
 }
 
+//get user by id
+const getUserById = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const user = await User.findById(id).select("-password");
+
+        if (!user) {
+            return res.status(404).json({ errors: ["User not found"] });
+        }
+    
+        res.status(200).json(user);
+    } catch (error) {
+        return res.status(500).json({ errors: [`Internal server error: ${error.message}`] });
+    }
+}
+
 module.exports = {
     register,
     login,
     getCurrentUser,
-    update
+    update,
+    getUserById
 }
