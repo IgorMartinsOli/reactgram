@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/users', require('./UserRouter'));
-router.use('/photos', require('./PhotoRoutes'));
+router.use('/api/users', require('./UserRouter'));
+router.use('/api/photos', require('./PhotoRoutes'));
 
 router.get('/', (req, res) => {
     res.json('Hello World!');
